@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import Character from './components/Character'
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
@@ -27,9 +27,23 @@ const App = () => {
       })
   }, [])
 
+  const kf = keyframes`
+  50% {
+    transform: scale(0.6);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+`
+
   const StyledApp = styled.div`
   text-align: center;
   font-family: 'Courier New', monospace;
+
+  transform: scale(2); //-> start of animation
+  opacity: 0; //-> start of animation
+  animation: ${kf} 0.4s ease-in-out forwards;
 `
 
   return (
