@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import Character from './components/Character'
+import styled from 'styled-components';
 
 const App = () => {
   // Try to think through what state you'll need for this app before starting. Then build out
@@ -25,14 +26,19 @@ const App = () => {
         console.log('api call made')
       })
   }, [])
-  console.log(charactersData)
+
+  const StyledApp = styled.div`
+  text-align: center;
+  font-family: 'Courier New', monospace;
+`
+
   return (
-    <div className="App">
+    <StyledApp>
       <h1 className="Header">Galactic Database</h1>
       {charactersData.map((data) => {
         return <Character data={data} key={data.created} />
       })}
-    </div>
+    </StyledApp>
   );
 }
 
